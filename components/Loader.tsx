@@ -13,7 +13,7 @@ export const Loader: React.FC<{ isLoading: boolean }> = ({ isLoading }) => {
         {/* Central Logo */}
         <div className="relative z-10">
           <img 
-            src="logo.png" 
+            src="/assets/klogo.png" 
             alt="Eco-Green Logo" 
             className="w-20 h-20 object-contain animate-float"
             onError={(e) => {
@@ -29,7 +29,7 @@ export const Loader: React.FC<{ isLoading: boolean }> = ({ isLoading }) => {
       
       <div className="text-center">
         <h2 className="text-2xl font-bold text-gray-900 tracking-widest uppercase">
-          Kaloleni <span className="text-green-600">CBO</span>
+          {/* Eco-green <span className="text-green-600">Youth Group</span> */}
         </h2>
         <div className="mt-2 flex items-center justify-center space-x-1">
           <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce"></div>
