@@ -4,7 +4,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Services } from './components/Services';
-import { CommunityHeart } from './components/CommunityHeart';
+import { Impact } from './components/Impact';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { WhatsAppButton } from './components/WhatsAppButton';
@@ -14,36 +14,34 @@ const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2500);
+    const timer = setTimeout(() => setIsLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen bg-white selection:bg-emerald-100 selection:text-emerald-900">
       <Loader isLoading={isLoading} />
       
       <div className={`transition-opacity duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
         <Navbar />
-        <main className="flex-grow">
+        
+        <main>
           <section id="home">
             <Hero />
           </section>
-          <section id="about">
-            <About />
-          </section>
-          <section id="services">
-            <Services />
-          </section>
-          <section id="community">
-            <CommunityHeart />
-          </section>
-          <section id="contact">
-            <Contact />
-          </section>
+          
+          <About />
+          
+          <Services />
+          
+          <Impact />
+          
+          <Contact />
         </main>
+        
         <Footer />
+        
+        {/* Floating Utilities */}
         <WhatsAppButton />
       </div>
     </div>

@@ -1,6 +1,7 @@
-
 {
-  "name": "Kaloleni Community Based Organisation",
-  "description": "An empowerment hub for youth growth, providing landscaping, cleaning, and garbage collection services while championing mental health and local capacity building.",
-  "requestFramePermissions": []
+  "name": "ECO-GREEN Youth Group",
+  "description": "A premium community-based organization portal for Kaloleni, focusing on youth empowerment, green initiatives, and community services through modern AI-driven engagement.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
 }

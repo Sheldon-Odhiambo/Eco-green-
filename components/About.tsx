@@ -1,80 +1,79 @@
+
 import React, { useEffect, useRef } from 'react';
+import { Goal } from '../types';
 
 export const About: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-          }
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('active');
         });
       },
       { threshold: 0.1 }
     );
-
-    const elements = containerRef.current?.querySelectorAll('.reveal-on-scroll');
-    elements?.forEach((el) => observer.observe(el));
-
+    const elements = ref.current?.querySelectorAll('.reveal-on-scroll');
+    elements?.forEach(el => observer.observe(el));
     return () => observer.disconnect();
   }, []);
 
-  const goals = [
-    { id: 1, title: 'Youth Employment', description: 'Creating direct job opportunities within our community initiatives.', icon: 'fa-briefcase' },
-    { id: 2, title: 'Local Capacity', description: 'Training and mentoring youth to take up leadership and technical roles.', icon: 'fa-users-cog' },
-    { id: 3, title: 'Mental Health', description: 'Advocating for well-being and rehabilitation as mental health champions.', icon: 'fa-heartbeat' },
+  const goals: Goal[] = [
+    { id: 1, title: 'Youth Employment', description: 'Direct job creation through community-led beautification projects.', icon: 'fa-briefcase' },
+    { id: 2, title: 'Local Capacity', description: 'Mentoring youth for leadership roles in technical and environmental sectors.', icon: 'fa-users-gear' },
+    { id: 3, title: 'Mental Health', description: 'Champions of rehabilitation and well-being within our community.', icon: 'fa-heart-pulse' },
   ];
 
   return (
-    <section className="py-24 bg-white overflow-hidden" aria-labelledby="about-heading" ref={containerRef}>
+    <section id="about" className="py-32 bg-white overflow-hidden" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Header */}
-        <div className="text-center mb-16 reveal-on-scroll">
-          <h2 id="about-heading" className="text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">
-            Our <span className="text-green-600 font-black">Story</span>
+        <div className="text-center mb-24 reveal-on-scroll">
+          <h2 className="text-5xl md:text-7xl font-black text-gray-900 mb-6 tracking-tighter">
+            Our <span className="text-emerald-600">Story</span>
           </h2>
-          <div className="w-24 h-1.5 bg-green-500 mx-auto rounded-full"></div>
-          <p className="mt-6 text-xl text-gray-500 max-w-2xl mx-auto">
-            ECO-GREEN Youth Group is more than just a CBO; we are a movement dedicated to the restoration of our community and the empowerment of its people.
+          <p className="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
+            More than a CBO; we are a movement dedicated to the restoration of Kaloleni and the empowerment of its people.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
-          {/* Text Content Column */}
-          <div className="space-y-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+          <div className="space-y-16">
             <div className="reveal-on-scroll">
-              <h3 className="text-3xl font-bold text-gray-900 mb-6 flex items-center">
-                <i className="fas fa-eye text-green-600 mr-4"></i> Vision
-              </h3>
-              <p className="text-2xl text-gray-700 italic border-l-8 border-green-600 pl-8 leading-relaxed bg-green-50/50 py-8 rounded-r-[2.5rem] transform hover:scale-[1.02] transition-transform duration-300 shadow-sm">
-                "To provide a proper <span className="font-bold text-green-800 underline decoration-green-300">empowerment hub</span> full of possibilities and growth for the youthful demographic."
+              <div className="flex items-center gap-4 mb-6">
+                 <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600">
+                    <i className="fas fa-eye text-xl"></i>
+                 </div>
+                 <h3 className="text-3xl font-bold text-gray-900">Vision</h3>
+              </div>
+              <p className="text-2xl text-gray-700 italic border-l-8 border-emerald-500 pl-8 leading-relaxed bg-emerald-50/50 py-10 rounded-r-[3rem] shadow-sm transform hover:scale-[1.01] transition-transform">
+                "To provide a proper <span className="font-bold text-emerald-800 underline decoration-emerald-300">empowerment hub</span> full of possibilities for the youthful demographic."
               </p>
             </div>
 
-            <div className="reveal-on-scroll" style={{ transitionDelay: '0.2s' }}>
-              <h3 className="text-3xl font-bold text-gray-900 mb-6 flex items-center">
-                <i className="fas fa-bullseye text-blue-600 mr-4"></i> Mission
-              </h3>
-              <p className="text-xl text-gray-600 leading-relaxed bg-gray-50 p-6 rounded-2xl border-l-4 border-blue-500">
-                To provide and uncover <span className="text-green-700 font-semibold underline decoration-green-400 decoration-2">endless opportunities</span> to harness the ever present youthful potential.
+            <div className="reveal-on-scroll [transition-delay:200ms]">
+               <div className="flex items-center gap-4 mb-6">
+                 <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600">
+                    <i className="fas fa-bullseye text-xl"></i>
+                 </div>
+                 <h3 className="text-3xl font-bold text-gray-900">Mission</h3>
+              </div>
+              <p className="text-xl text-gray-600 leading-relaxed bg-gray-50 p-8 rounded-[2.5rem] border-l-4 border-blue-500">
+                To uncover <span className="text-emerald-700 font-semibold underline decoration-emerald-400">endless opportunities</span> that harness the ever-present potential of our youth.
               </p>
             </div>
 
-            <div className="reveal-on-scroll bg-gray-900 p-10 rounded-[3rem] shadow-2xl border border-gray-800 group" style={{ transitionDelay: '0.4s' }}>
-              <h3 className="text-3xl font-bold text-white mb-8 flex items-center">
-                Core Objectives
-                <i className="fas fa-star ml-3 text-yellow-400 animate-pulse"></i>
-              </h3>
-              <div className="space-y-8" role="list">
+            <div className="reveal-on-scroll bg-gray-900 p-12 rounded-[3.5rem] shadow-2xl relative overflow-hidden [transition-delay:400ms]">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl" />
+              <h3 className="text-3xl font-bold text-white mb-10">Core Objectives</h3>
+              <div className="space-y-10">
                 {goals.map((goal) => (
-                  <div key={goal.id} className="flex items-start group/item" role="listitem">
-                    <div className="bg-white/10 p-4 rounded-2xl mr-6 shadow-sm group-hover/item:bg-green-600 group-hover/item:text-white transition-all duration-300 transform group-hover/item:rotate-12" aria-hidden="true">
-                      <i className={`fas ${goal.icon} text-green-400 group-hover/item:text-white text-xl`}></i>
+                  <div key={goal.id} className="flex gap-6 group">
+                    <div className="flex-shrink-0 w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-emerald-400 group-hover:bg-emerald-600 group-hover:text-white transition-all transform group-hover:rotate-6">
+                      <i className={`fas ${goal.icon} text-xl`}></i>
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold text-white group-hover/item:text-green-400 transition-colors">{goal.title}</h4>
+                      <h4 className="text-xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">{goal.title}</h4>
                       <p className="text-gray-400 leading-relaxed">{goal.description}</p>
                     </div>
                   </div>
@@ -82,52 +81,28 @@ export const About: React.FC = () => {
               </div>
             </div>
           </div>
-          
-          {/* Visual Column - Insightful Images */}
-          <div className="space-y-8 h-full">
-            <div className="reveal-on-scroll relative group rounded-[3rem] overflow-hidden shadow-2xl min-h-[500px]" style={{ transitionDelay: '0.3s' }}>
-              <img 
-                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1200" 
-                alt="Youth working together" 
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                loading="lazy"
-                onError={(e) => {
-                  e.currentTarget.src = 'https://images.unsplash.com/photo-1542601906990-b4d3fb773b09?auto=format&fit=crop&q=80&w=1200';
-                }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-10">
-                <div className="bg-green-500 text-white text-[10px] font-bold uppercase tracking-[0.2em] px-4 py-1 rounded-full w-fit mb-4">The Future is Green</div>
-                <h4 className="text-white font-extrabold text-4xl leading-tight">Insightful Growth for a Cleaner Kaloleni.</h4>
-                <p className="text-gray-300 mt-4 text-lg">Every plant we put in the ground represents a youth employed and a community beautified.</p>
-              </div>
-            </div>
 
-            <div className="grid grid-cols-2 gap-6 reveal-on-scroll" style={{ transitionDelay: '0.5s' }}>
-              <div className="relative group rounded-[2rem] overflow-hidden shadow-xl h-48 border-4 border-white bg-gray-100">
-                <img 
-                  src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&q=80&w=600" 
-                  alt="Landscaping work" 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  loading="lazy"
-                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                />
-                <div className="absolute inset-0 bg-green-600/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                   <p className="text-white font-black uppercase tracking-widest text-sm text-center px-2">Beautification Hub</p>
+          <div className="relative">
+             <div className="reveal-on-scroll relative group rounded-[4rem] overflow-hidden shadow-2xl [transition-delay:300ms]">
+               <img 
+                 src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1200" 
+                 alt="Community unity" 
+                 className="w-full h-[650px] object-cover transition-transform duration-1000 group-hover:scale-110"
+               />
+               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-16">
+                 <div className="bg-emerald-500 text-white text-[10px] font-black uppercase tracking-[0.3em] px-4 py-1 rounded-full w-fit mb-6">The Future is Green</div>
+                 <h4 className="text-white font-black text-5xl leading-tight mb-6">Growth for a Cleaner Kaloleni.</h4>
+                 <p className="text-gray-300 text-lg leading-relaxed">Each initiative we start is a seed of prosperity for our community's future.</p>
+               </div>
+             </div>
+             
+             {/* Floating Badge */}
+             <div className="absolute -bottom-10 -left-10 bg-white p-8 rounded-[2.5rem] shadow-2xl reveal-on-scroll [transition-delay:600ms] hidden lg:block border border-gray-100">
+                <div className="flex items-center gap-4">
+                   <div className="text-4xl font-black text-emerald-600">10+</div>
+                   <div className="text-xs font-bold uppercase tracking-widest text-gray-500">Years of<br/>Impact</div>
                 </div>
-              </div>
-              <div className="relative group rounded-[2rem] overflow-hidden shadow-xl h-48 border-4 border-white bg-gray-100">
-                <img 
-                  src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&q=80&w=600" 
-                  alt="Community Meeting" 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  loading="lazy"
-                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                />
-                <div className="absolute inset-0 bg-blue-600/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                   <p className="text-white font-black uppercase tracking-widest text-sm text-center px-2">Stronger Together</p>
-                </div>
-              </div>
-            </div>
+             </div>
           </div>
         </div>
       </div>
